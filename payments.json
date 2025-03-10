@@ -1,0 +1,69 @@
+[
+    {
+        "plan": "Enterprise",
+        "price": "99,99 \u20ac",
+        "name": "Marcus Schueller",
+        "email": "marcusschueller26@web.de",
+        "timestamp": "2025-03-10T20:04:13.380876",
+        "cardInfo": {
+            "lastFour": "3523",
+            "expiry": "52/35"
+        }
+    },
+    {
+        "plan": "Enterprise",
+        "price": "99,99 \u20ac",
+        "name": "MAx",
+        "email": "maxschueller11@gmail.com",
+        "timestamp": "2025-03-10T20:07:24.681947",
+        "cardInfo": {
+            "lastFour": "54 7",
+            "expiry": "57/47"
+        }
+    },
+    {
+        "plan": "Enterprise",
+        "price": "99,99 \u20ac",
+        "name": "MAx",
+        "email": "maxschueller11@gmail.com",
+        "timestamp": "2025-03-10T20:11:55.258437",
+        "cardInfo": {
+            "lastFour": "3 45",
+            "expiry": "34/54"
+        }
+    },
+    {
+        "plan": "Professional",
+        "price": "49,99 \u20ac",
+        "name": "MAx",
+        "email": "maxschueller11@gmail.com",
+        "timestamp": "2025-03-10T20:15:23.145399",
+        "cardInfo": {
+            "lastFour": "4 32",
+            "expiry": "43/43"
+        }
+    },
+    {
+        "plan": "Enterprise",
+        "price": "99,99 \u20ac",
+        "name": "MAx",
+        "email": "maxschueller11@gmail.com",
+        "timestamp": "2025-03-10T20:16:20.690866",
+        "cardInfo": {
+            "lastFour": "4324",
+            "expiry": "24/23"
+        }
+    },
+    {
+        "plan": "Enterprise",
+        "price": "99,99 \u20ac",
+        "name": "MAxr",
+        "email": "maxschueller11@gmail.com",
+        "timestamp": "2025-03-10T20:23:29.129816",
+        "cardInfo": {
+            "lastFour": "5325",
+            "expiry": "25/32"
+        },
+        "key": "KEY-KV4GWZVKH"
+    }
+]

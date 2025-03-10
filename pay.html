@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keylogger Pro - Premium Version</title>
+    <style>
+        :root {
+            --primary: #3498DB;
+            --secondary: #2980B9;
+            --success: #2ECC71;
+            --danger: #E74C3C;
+            --dark: #1E272E;
+            --light: #D6E0F0;
+            --card: #2C3E50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            margin-bottom: 3rem;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .features, .pricing {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card, .price-card {
+            background-color: var(--card);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card:hover, .price-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            margin: 1rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: scale(1.05);
+        }
+
+        .payment-methods {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .payment-icon {
+            width: 50px;
+            margin: 0 1rem;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .payment-icon:hover {
+            opacity: 1;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--card);
+            margin-top: 3rem;
+            border-radius: 10px;
+        }
+
+        .secure-badge {
+            display: inline-block;
+            background-color: var(--success);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
+        /* Popup und Loading Styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--card);
+            padding: 2rem;
+            border-radius: 10px;
+            z-index: 1000;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .popup h3 {
+            margin-bottom: 1rem;
+        }
+
+        .popup input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            background: var(--dark);
+            border: 1px solid var(--primary);
+            color: var(--light);
+            border-radius: 5px;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 999;
+        }
+
+        .loading {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1001;
+            color: var(--light);
+            text-align: center;
+        }
+
+        .loading-spinner {
+            border: 4px solid var(--card);
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .success-message, .error-message {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            color: white;
+            z-index: 1000;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .success-message {
+            background: var(--success);
+        }
+
+        .error-message {
+            background: var(--danger);
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🔍 Keylogger Pro</h1>
+            <p class="subtitle">Die fortschrittlichste Monitoring-Lösung für Ihr System</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Sicher & Verschlüsselt</h3>
+                <p>Alle Daten werden mit militärischer Verschlüsselung gesichert</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Detaillierte Statistiken</h3>
+                <p>Umfassende Analysen und Visualisierungen</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Präzise Aufzeichnung</h3>
+                <p>Erfasst jeden Tastendruck mit höchster Genauigkeit</p>
+            </div>
+        </div>
+
+        <div class="pricing">
+            <div class="price-card">
+                <h3>Basic</h3>
+                <div class="price">29,99 €</div>
+                <ul>
+                    <li>Grundlegende Logging-Funktionen</li>
+                    <li>30 Tage Aufzeichnung</li>
+                    <li>Email-Support</li>
+                </ul>
+                <a href="#" class="btn">Jetzt kaufen</a>
+            </div>
+            <div class="price-card">
+                <h3>Professional</h3>
+                <div class="price">49,99 €</div>
+                <ul>
+                    <li>Erweiterte Statistiken</li>
+                    <li>Unbegrenzte Aufzeichnung</li>
+                    <li>Priority Support</li>
+                </ul>
+                <a href="#" class="btn">Jetzt kaufen</a>
+            </div>
+            <div class="price-card">
+                <h3>Enterprise</h3>
+                <div class="price">99,99 €</div>
+                <ul>
+                    <li>Alle Professional Features</li>
+                    <li>Hacker Mode</li>
+                    <li>24/7 Support</li>
+                </ul>
+                <a href="#" class="btn">Jetzt kaufen</a>
+            </div>
+        </div>
+
+        <div class="payment-methods">
+            <h3>Sichere Zahlungsmethoden</h3>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/200px-Visa_Inc._logo.svg.png" alt="Visa" class="payment-icon">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/200px-Mastercard-logo.svg.png" alt="Mastercard" class="payment-icon">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/200px-PayPal.svg.png" alt="PayPal" class="payment-icon">
+            <div class="secure-badge">
+                🔒 256-bit SSL Verschlüsselung
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 Keylogger Pro. Alle Rechte vorbehalten.</p>
+            <p>
+                <a href="#" style="color: var(--light); margin: 0 10px;">Datenschutz</a>
+                <a href="#" style="color: var(--light); margin: 0 10px;">AGB</a>
+                <a href="#" style="color: var(--light); margin: 0 10px;">Kontakt</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Popup für Kaufabwicklung -->
+    <div class="overlay" id="overlay"></div>
+    
+    <div class="popup" id="purchasePopup">
+        <h3>🛒 Kaufabwicklung</h3>
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="email" id="email" placeholder="E-Mail" required>
+        <input type="text" id="cardNumber" placeholder="Kartennummer" required>
+        <input type="text" id="expiry" placeholder="MM/YY" required>
+        <input type="text" id="cvv" placeholder="CVV" required>
+        <button class="btn" onclick="processPurchase()">Bezahlen</button>
+        <button class="btn" style="background: var(--danger)" onclick="closePopup()">Abbrechen</button>
+    </div>
+
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+        <p>Bearbeite Zahlung...</p>
+    </div>
+
+    <div class="success-message" id="successMessage">
+        ✅ Zahlung erfolgreich! Vielen Dank für Ihren Kauf.
+    </div>
+
+    <div class="error-message" id="errorMessage">
+        ❌ Fehler bei der Zahlung. Bitte versuchen Sie es erneut.
+    </div>
+
+    <script>
+        let currentPlan = '';
+        let currentPrice = '';
+        let generatedKey = '';
+
+        // Kaufbuttons mit Event Listener versehen
+        document.querySelectorAll('.btn').forEach(button => {
+            if (button.textContent === 'Jetzt kaufen') {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const card = this.closest('.price-card');
+                    currentPlan = card.querySelector('h3').textContent;
+                    currentPrice = card.querySelector('.price').textContent;
+                    generatedKey = generateKey();
+                    showPopup();
+                });
+            }
+        });
+
+        function generateKey() {
+            return 'KEY-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+        }
+
+        function showPopup() {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('purchasePopup').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('purchasePopup').style.display = 'none';
+            resetForm();
+        }
+
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function hideLoading() {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        function showMessage(type, duration = 5000) {
+            const element = document.getElementById(type + 'Message');
+            element.style.display = 'block';
+            setTimeout(() => {
+                element.style.display = 'none';
+            }, duration);
+        }
+
+        function resetForm() {
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('cardNumber').value = '';
+            document.getElementById('expiry').value = '';
+            document.getElementById('cvv').value = '';
+        }
+
+        async function processPurchase() {
+            // Validiere Eingaben
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const cardNumber = document.getElementById('cardNumber').value;
+            const expiry = document.getElementById('expiry').value;
+            const cvv = document.getElementById('cvv').value;
+
+            if (!name || !email || !cardNumber || !expiry || !cvv) {
+                showMessage('error');
+                return;
+            }
+
+            closePopup();
+            showLoading();
+
+            const purchaseData = {
+                plan: currentPlan,
+                price: currentPrice,
+                name: name,
+                email: email,
+                key: generatedKey
+            };
+
+            try {
+                const response = await fetch('/purchase', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(purchaseData)
+                });
+
+                if (response.ok) {
+                    hideLoading();
+                    showMessage('success');
+                } else {
+                    throw new Error('Fehler bei der Zahlung');
+                }
+            } catch (error) {
+                console.error('Fehler:', error);
+                hideLoading();
+                showMessage('error');
+            }
+        }
+
+        // Format-Validierung für Karteneingaben
+        document.getElementById('cardNumber').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 16) value = value.slice(0, 16);
+            e.target.value = value.replace(/(\d{4})/g, '$1 ').trim();
+        });
+
+        document.getElementById('expiry').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 4) value = value.slice(0, 4);
+            if (value.length > 2) {
+                value = value.slice(0, 2) + '/' + value.slice(2);
+            }
+            e.target.value = value;
+        });
+
+        document.getElementById('cvv').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 3) value = value.slice(0, 3);
+            e.target.value = value;
+        });
+    </script>
+</body>
+</html>

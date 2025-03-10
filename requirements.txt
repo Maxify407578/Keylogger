@@ -1,0 +1,35 @@
+# GUI-Pakete
+PyQt6==6.6.1
+PyQt6-Charts==6.8.0
+# tkinter ist Teil der Python-Standardbibliothek und muss nicht installiert werden
+
+# Keylogging
+keyboard==0.13.5
+
+# KI und Datenanalyse
+scikit-learn==1.4.0
+pandas==2.2.0
+numpy==1.26.3
+
+# Deep Learning
+tensorflow==2.18.0
+# tensorflow-intel wird nicht mehr benötigt, da es in tensorflow integriert ist
+
+# Textanalyse
+nltk==3.8.1
+
+# Entwicklungswerkzeuge
+pylance==0.9.0
+python-lsp-server==1.9.0
+
+# Zusätzliche Pakete aus dem Code
+matplotlib==3.8.2
+Pillow==10.1.0
+fpdf==1.7.2
+pyautogui==0.9.54
+cryptography==41.0.5
+colorama==0.4.6
+
+# Flask
+flask==3.0.2
+flask-cors==4.0.0 

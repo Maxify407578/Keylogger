@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keylogger Pro - Hilfe</title>
+    <style>
+        :root {
+            --bg-color: #f5f5f5;
+            --text-color: #333;
+            --heading-color: #2980B9;
+            --section-bg: #ffffff;
+            --section-shadow: rgba(0,0,0,0.1);
+            --accent-color: #3498DB;
+            --accent-dark: #2980B9;
+            --success-color: #2ECC71;
+            --danger-color: #E74C3C;
+            --warning-color: #F39C12;
+            --warning-bg: #FFECB3;
+            --tip-color: #2196F3;
+            --tip-bg: #E3F2FD;
+            --neutral-color: #7F8C8D;
+            --border-color: #ddd;
+            --table-header-bg: #f2f2f2;
+            --footer-color: #7F8C8D;
+            --toggle-bg: #ddd;
+            --toggle-circle: #fff;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #e0e0e0;
+            --heading-color: #4da6ff;
+            --section-bg: #2c2c2c;
+            --section-shadow: rgba(0,0,0,0.3);
+            --accent-color: #4da6ff;
+            --accent-dark: #3a80bf;
+            --success-color: #4cd964;
+            --danger-color: #ff3b30;
+            --warning-color: #ff9500;
+            --warning-bg: #4d3800;
+            --tip-color: #5ac8fa;
+            --tip-bg: #003366;
+            --neutral-color: #a0a0a0;
+            --border-color: #444;
+            --table-header-bg: #333;
+            --footer-color: #888;
+            --toggle-bg: #4da6ff;
+            --toggle-circle: #1a1a1a;
+        }
+        
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg-color);
+        }
+        
+        h1, h2, h3 {
+            color: var(--heading-color);
+            font-weight: 600;
+        }
+        
+        h1 {
+            text-align: center;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 0;
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+        }
+        
+        .section {
+            background-color: var(--section-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px var(--section-shadow);
+            transition: transform 0.2s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-3px);
+        }
+        
+        .feature {
+            margin-bottom: 20px;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .warning {
+            background-color: var(--warning-bg);
+            border-left: 5px solid var(--warning-color);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip {
+            background-color: var(--tip-bg);
+            border-left: 5px solid var(--tip-color);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px var(--section-shadow);
+        }
+        
+        table, th, td {
+            border: 1px solid var(--border-color);
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: var(--table-header-bg);
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: var(--section-shadow);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            font-size: 0.9em;
+            color: var(--footer-color);
+            border-top: 1px solid var(--border-color);
+        }
+        
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        a:hover {
+            color: var(--accent-dark);
+            text-decoration: underline;
+        }
+        
+        .toc-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .toc-list li {
+            margin-bottom: 10px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.2s ease;
+        }
+        
+        .toc-list li:hover {
+            background-color: var(--section-shadow);
+        }
+        
+        .toc-list a {
+            display: block;
+            font-weight: 500;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+        }
+        
+        .theme-switch {
+            display: inline-block;
+            height: 26px;
+            position: relative;
+            width: 50px;
+        }
+        
+        .theme-switch input {
+            display: none;
+        }
+        
+        .slider {
+            background-color: var(--toggle-bg);
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .slider:before {
+            background-color: var(--toggle-circle);
+            bottom: 3px;
+            content: "";
+            height: 20px;
+            left: 4px;
+            position: absolute;
+            transition: .4s;
+            width: 20px;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: var(--accent-color);
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(23px);
+        }
+        
+        .theme-icon {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            box-shadow: 0 2px 5px var(--section-shadow);
+            z-index: 1000;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--accent-dark);
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <h1>🔍 Keylogger Pro - Hilfe</h1>
+        <div class="theme-switch-wrapper">
+            <span class="theme-icon">☀️</span>
+            <label class="theme-switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider"></span>
+            </label>
+            <span class="theme-icon">🌙</span>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>📋 Inhaltsverzeichnis</h2>
+        <ul class="toc-list">
+            <li><a href="#einleitung">🚀 Einleitung</a></li>
+            <li><a href="#anmeldung">🔐 Anmeldung</a></li>
+            <li><a href="#hauptfunktionen">⚙️ Hauptfunktionen</a></li>
+            <li><a href="#logging">▶️ Logging starten und stoppen</a></li>
+            <li><a href="#daten">💾 Daten verwalten</a></li>
+            <li><a href="#export">📊 Export-Optionen</a></li>
+            <li><a href="#suche">🔍 Suche und Filterung</a></li>
+            <li><a href="#sicherheit">🛡️ Sicherheit und Datenschutz</a></li>
+            <li><a href="#faq">❓ Häufig gestellte Fragen</a></li>
+        </ul>
+    </div>
+    
+    <div id="einleitung" class="section">
+        <h2>🚀 Einleitung</h2>
+        <p>Willkommen bei Keylogger Pro! Diese Anwendung ermöglicht es Ihnen, Tastenanschläge zu protokollieren, zu analysieren und zu exportieren. Sie bietet eine benutzerfreundliche Oberfläche mit zahlreichen Funktionen zur Verwaltung und Auswertung der aufgezeichneten Daten.</p>
+        
+        <div class="warning">
+            <strong>⚠️ Wichtiger Hinweis:</strong> Verwenden Sie diese Software nur für legale Zwecke und mit Zustimmung aller betroffenen Personen. Die unbefugte Überwachung von Tastenanschlägen kann gegen Datenschutzgesetze und andere rechtliche Bestimmungen verstoßen.
+        </div>
+    </div>
+    
+    <div id="anmeldung" class="section">
+        <h2>🔐 Anmeldung</h2>
+        <p>Beim Start der Anwendung werden Sie aufgefordert, sich anzumelden. Dies dient dem Schutz der aufgezeichneten Daten und verhindert unbefugten Zugriff.</p>
+        
+        <div class="feature">
+            <h3>Passwort vergessen?</h3>
+            <p>Falls Sie Ihr Passwort vergessen haben, können Sie die "Passwort vergessen"-Funktion nutzen. Beachten Sie, dass Sie möglicherweise Zugriff auf Ihre gespeicherten Daten verlieren, wenn Sie Ihr Passwort zurücksetzen.</p>
+        </div>
+        
+        <div class="tip">
+            <strong>💡 Tipp:</strong> Verwenden Sie ein sicheres Passwort, das Sie sich gut merken können. Notieren Sie es an einem sicheren Ort.
+        </div>
+    </div>
+    
+    <div id="hauptfunktionen" class="section">
+        <h2>⚙️ Hauptfunktionen</h2>
+        <p>Die Benutzeroberfläche ist in mehrere Bereiche unterteilt, die Ihnen einen schnellen Zugriff auf alle Funktionen ermöglichen:</p>
+        
+        <div class="feature">
+            <h3>Statusbereich</h3>
+            <p>Zeigt den aktuellen Status des Keyloggers (aktiv/inaktiv), die Anzahl der aufgezeichneten Tastenanschläge und die Tippgeschwindigkeit an. Ein farbiger Indikator gibt Ihnen sofort Auskunft über den aktuellen Betriebszustand.</p>
+        </div>
+        
+        <div class="feature">
+            <h3>Protokollbereich</h3>
+            <p>Hier werden alle aufgezeichneten Tastenanschläge mit Zeitstempel angezeigt. Sie können durch die Logs scrollen und nach bestimmten Einträgen suchen.</p>
+        </div>
+        
+        <div class="feature">
+            <h3>Steuerungsbereich</h3>
+            <p>Enthält Schaltflächen zum Starten/Stoppen des Loggings, Löschen der Logs, Speichern und Exportieren der Daten. Die Schaltflächen sind intuitiv gestaltet und mit Symbolen versehen.</p>
+        </div>
+        
+        <div class="feature">
+            <h3>Statistikbereich</h3>
+            <p>Visualisiert Ihre Tippaktivität und zeigt Trends über Zeit an. Hier können Sie Ihre Produktivität analysieren und Muster in Ihrer Tastaturnutzung erkennen.</p>
+        </div>
+    </div>
+    
+    <div id="logging" class="section">
+        <h2>▶️ Logging starten und stoppen</h2>
+        
+        <div class="feature">
+            <h3>Logging starten</h3>
+            <p>Klicken Sie auf die Schaltfläche "Logging starten", um die Aufzeichnung von Tastenanschlägen zu beginnen. Der Status wechselt auf "Aktiv" und die Statusanzeige wird grün. Eine Animation bestätigt den erfolgreichen Start des Loggings.</p>
+        </div>
+        
+        <div class="feature">
+            <h3>Logging stoppen</h3>
+            <p>Klicken Sie auf die Schaltfläche "Logging stoppen", um die Aufzeichnung zu beenden. Die Sitzung wird automatisch gespeichert und in der Sitzungshistorie angezeigt. Eine Animation bestätigt das erfolgreiche Beenden des Loggings.</p>
+        </div>
+        
+        <div class="tip">
+            <strong>💡 Tipp:</strong> Sie können mehrere Logging-Sitzungen erstellen, um verschiedene Aktivitäten getrennt zu protokollieren. Dies hilft bei der Organisation und Analyse Ihrer Daten.
+        </div>
+        
+        <table>
+            <tr>
+                <th>Aktion</th>
+                <th>Tastenkombination</th>
+                <th>Beschreibung</th>
+            </tr>
+            <tr>
+                <td>Logging starten/stoppen</td>
+                <td>Strg + L</td>
+                <td>Startet oder stoppt die Aufzeichnung</td>
+            </tr>
+            <tr>
+                <td>Logs speichern</td>
+                <td>Strg + S</td>
+                <td>Speichert die aktuellen Logs</td>
+            </tr>
+            <tr>
+                <td>Logs löschen</td>
+                <td>Strg + D</td>
+                <td>Löscht alle aktuellen Logs</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="daten" class="section">
+        <h2>💾 Daten verwalten</h2>
+        
+        <div class="feature">
+            <h3>Logs löschen</h3>
+            <p>Mit der Schaltfläche "Log löschen" können Sie alle aktuell angezeigten Logs löschen. Sie werden vor dem Löschen um Bestätigung gebeten, um versehentliches Löschen zu vermeiden.</p>
+        </div>
+        
+        <div class="feature">
+            <h3>Logs speichern</h3>
+            <p>Klicken Sie auf "Log speichern", um die aktuellen Logs in einer Textdatei zu speichern. Die Datei wird mit einem Zeitstempel versehen, um verschiedene Speicherstände unterscheiden zu können.</p>
+        </div>
+        
+        <div class="feature">
+            <h3>Automatische Sicherung</h3>
+            <p>Die Anwendung erstellt in regelmäßigen Abständen automatische Sicherungen Ihrer Logs, um Datenverlust zu vermeiden. Diese finden Sie im "backups"-Verzeichnis.</p>
+        </div>
+        
+        <div class="warning">
+            <strong>⚠️ Achtung:</strong> Gelöschte Logs können nicht wiederhergestellt werden. Stellen Sie sicher, dass Sie wichtige Daten vorher speichern oder exportieren.
+        </div>
+    </div>
+    
+    <div id="export" class="section">
+        <h2>📊 Export-Optionen</h2>
+        
+        <div class="feature">
+            <h3>CSV-Export</h3>
+            <p>Exportieren Sie Ihre Logs im CSV-Format für die Weiterverarbeitung in Tabellenkalkulationsprogrammen wie Excel oder Google Sheets. Dies ermöglicht detaillierte Analysen und die Erstellung benutzerdefinierter Diagramme.</p>
+        </div>
+        
+        <div class="feature">
+            <h3>Statistiken</h3>
+            <p>Die Anwendung zeigt Statistiken zu Ihren Tippgewohnheiten an, einschließlich Tippgeschwindigkeit und Aktivitätsniveau. Diese Daten werden in Echtzeit aktualisiert und können exportiert werden.</p>
+        </div>
+        
+        <div class="feature">
+            <h3>PDF-Export</h3>
+            <p>Erstellen Sie professionelle PDF-Berichte mit Ihren Logging-Daten und Statistiken. Diese eignen sich besonders für die Dokumentation und Präsentation Ihrer Ergebnisse.</p>
+        </div>
+        
+        <div class="tip">
+            <strong>💡 Tipp:</strong> Nutzen Sie regelmäßige Exporte, um langfristige Trends in Ihren Tippgewohnheiten zu erkennen und Ihre Produktivität zu steigern.
+        </div>
+    </div>
+    
+    <div id="suche" class="section">
+        <h2>🔍 Suche und Filterung</h2>
+        
+        <div class="feature">
+            <h3>Logs durchsuchen</h3>
+            <p>Verwenden Sie das Suchfeld, um bestimmte Einträge in Ihren Logs zu finden. Die Suchergebnisse werden farblich hervorgehoben, um sie leichter identifizieren zu können.</p>
+        </div>
+        
+        <div class="feature">
+            <h3>Erweiterte Filteroptionen</h3>
+            <p>Filtern Sie Ihre Logs nach Datum, Uhrzeit oder bestimmten Tastenanschlägen. Dies hilft Ihnen, genau die Informationen zu finden, die Sie benötigen.</p>
+        </div>
+        
+        <div class="tip">
+            <strong>💡 Tipp:</strong> Die Suche wird automatisch aktualisiert, während Sie tippen. Verwenden Sie spezifische Suchbegriffe für präzisere Ergebnisse.
+        </div>
+    </div>
+    
+    <div id="sicherheit" class="section">
+        <h2>🛡️ Sicherheit und Datenschutz</h2>
+        
+        <div class="feature">
+            <h3>Passwortschutz</h3>
+            <p>Die Anwendung ist durch ein Passwort geschützt, um unbefugten Zugriff zu verhindern. Nur autorisierte Benutzer können auf die aufgezeichneten Daten zugreifen.</p>
+        </div>
+        
+        <div class="feature">
+            <h3>Verschlüsselung</h3>
+            <p>Gespeicherte Passwörter und sensible Daten werden mit modernen Verschlüsselungsalgorithmen geschützt, um höchste Sicherheit zu gewährleisten.</p>
+        </div>
+        
+        <div class="feature">
+            <h3>Lokale Datenspeicherung</h3>
+            <p>Alle Daten werden ausschließlich lokal auf Ihrem Computer gespeichert. Es erfolgt keine Übertragung an externe Server oder Dritte.</p>
+        </div>
+        
+        <div class="warning">
+            <strong>⚠️ Wichtig:</strong> Bewahren Sie Ihre Schlüsseldatei (key.key) sicher auf. Ohne sie können verschlüsselte Daten nicht wiederhergestellt werden.
+        </div>
+    </div>
+    
+    <div id="faq" class="section">
+        <h2>❓ Häufig gestellte Fragen</h2>
+        
+        <div class="feature">
+            <h3>Ist die Verwendung eines Keyloggers legal?</h3>
+            <p>Die Verwendung eines Keyloggers ist nur legal, wenn alle betroffenen Personen darüber informiert sind und ihre Zustimmung gegeben haben. Die unbefugte Überwachung von Tastenanschlägen kann strafbar sein.</p>
+        </div>
+        
+        <div class="feature">
+            <h3>Kann ich die Anwendung im Hintergrund laufen lassen?</h3>
+            <p>Ja, die Anwendung kann im Hintergrund laufen, während Sie andere Programme verwenden. Beachten Sie jedoch, dass sie weiterhin Systemressourcen verbraucht.</p>
+        </div>
+        
+        <div class="feature">
+            <h3>Werden meine Daten an Dritte weitergegeben?</h3>
+            <p>Nein, alle aufgezeichneten Daten werden lokal auf Ihrem Computer gespeichert und nicht an Dritte weitergegeben.</p>
+        </div>
+        
+        <div class="feature">
+            <h3>Wie kann ich die Anwendung beenden?</h3>
+            <p>Klicken Sie auf das Schließen-Symbol (X) in der oberen rechten Ecke des Fensters. Wenn das Logging aktiv ist, werden Sie gefragt, ob Sie es beenden möchten.</p>
+        </div>
+        
+        <div class="feature">
+            <h3>Kann ich mehrere Computer überwachen?</h3>
+            <p>Ja, Sie können die Anwendung auf mehreren Computern installieren. Beachten Sie jedoch, dass jede Installation separat konfiguriert werden muss und die Daten nicht automatisch synchronisiert werden.</p>
+        </div>
+        
+        <div class="feature">
+            <h3>Wie viel Speicherplatz benötigen die Logs?</h3>
+            <p>Die Größe der Logs hängt von der Menge der aufgezeichneten Tastenanschläge ab. In der Regel sind die Dateien jedoch sehr klein und benötigen nur wenige Kilobyte bis Megabyte Speicherplatz.</p>
+        </div>
+    </div>
+    
+    <a href="#" class="back-to-top" id="back-to-top">↑</a>
+    
+    <footer>
+        <p>Keylogger Pro Version 2.0 | Copyright © 2023 | Alle Rechte vorbehalten</p>
+        <p>Entwickelt mit ❤️ für maximale Benutzerfreundlichkeit und Sicherheit</p>
+    </footer>
+    
+    <script>
+        // Dark Mode Toggle
+        const toggleSwitch = document.getElementById('theme-toggle');
+        const currentTheme = localStorage.getItem('theme');
+        
+        if (currentTheme) {
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            if (currentTheme === 'dark') {
+                toggleSwitch.checked = true;
+            }
+        }
+        
+        function switchTheme(e) {
+            if (e.target.checked) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+        
+        toggleSwitch.addEventListener('change', switchTheme, false);
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
